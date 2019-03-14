@@ -29,7 +29,7 @@ class SAMLServiceProviderSettings(object):
         strict=True,
 
         # Service provider settings (e.g. us)
-        sp_metadata_url=None, sp_login_url=None, sp_logout_url=None, sp_x509cert=None, sp_private_key=None,
+        sp_metadata_url='http://localhost:8000/admin/', sp_login_url=None, sp_logout_url=None, sp_x509cert=None, sp_private_key=None,
         # Identify provider settings (e.g. onelogin)
         idp_metadata_url=None, idp_sso_url=None, idp_slo_url=None, idp_x509cert=None, idp_x509_fingerprint=None,
     ):
@@ -171,7 +171,7 @@ class OneloginServiceProviderSettings(SAMLServiceProviderSettings):
             id=onelogin_idp_entity_id or onelogin_connector_id
         )
         kwargs['idp_sso_url'] = 'https://innomate-dev.onelogin.com/trust/saml2/http-post/sso/894551'
-        kwargs['sp_login_url'] = 'https://localhost:8000/admin/'
+        #kwargs['sp_login_url'] = 'https://localhost:8000/admin/'
         kwargs['idp_slo_url'] = 'https://app.onelogin.com/trust/saml2/http-redirect/slo/{id}/'.format(
             id=onelogin_connector_id
         )
