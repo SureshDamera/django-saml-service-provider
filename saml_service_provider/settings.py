@@ -170,8 +170,7 @@ class OneloginServiceProviderSettings(SAMLServiceProviderSettings):
         kwargs['idp_metadata_url'] = 'https://app.onelogin.com/saml/metadata/{id}'.format(
             id=onelogin_idp_entity_id or onelogin_connector_id
         )
-        kwargs['idp_sso_url'] = onelogin_sso_url
-        )
+        kwargs['idp_sso_url'] = 'https://innomate-dev.onelogin.com/trust/saml2/http-post/sso/894551'
         kwargs['idp_slo_url'] = 'https://app.onelogin.com/trust/saml2/http-redirect/slo/{id}/'.format(
             id=onelogin_connector_id
         )
