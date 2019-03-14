@@ -56,7 +56,7 @@ class SAMLServiceProviderSettings(object):
                     # SAML protocol binding to be used when returning the <Response>
                     # message. OneLogin Toolkit supports this endpoint for the
                     # HTTP-POST binding only.
-                    "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
+                    "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect",
                 },
                 # Specifies info about where and how the <Logout Response> message MUST be
                 # returned to the requester, in this case our SP.
@@ -171,6 +171,7 @@ class OneloginServiceProviderSettings(SAMLServiceProviderSettings):
             id=onelogin_idp_entity_id or onelogin_connector_id
         )
         kwargs['idp_sso_url'] = 'https://innomate-dev.onelogin.com/trust/saml2/http-post/sso/894551'
+        kwargs['sp_login_url'] = 'https://localhost:8000/admin/'
         kwargs['idp_slo_url'] = 'https://app.onelogin.com/trust/saml2/http-redirect/slo/{id}/'.format(
             id=onelogin_connector_id
         )
