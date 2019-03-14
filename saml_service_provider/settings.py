@@ -166,12 +166,11 @@ class SAMLServiceProviderSettings(object):
 
 
 class OneloginServiceProviderSettings(SAMLServiceProviderSettings):
-    def __init__(self, onelogin_connector_id=None, onelogin_idp_entity_id=None, onelogin_x509_cert=None, onelogin_x509_fingerprint=None, **kwargs):
+    def __init__(self, onelogin_connector_id=None, onelogin_sso_url=None, onelogin_idp_entity_id=None, onelogin_x509_cert=None, onelogin_x509_fingerprint=None, **kwargs):
         kwargs['idp_metadata_url'] = 'https://app.onelogin.com/saml/metadata/{id}'.format(
             id=onelogin_idp_entity_id or onelogin_connector_id
         )
-        kwargs['idp_sso_url'] = 'https://app.onelogin.com/trust/saml2/http-post/sso/{id}/'.format(
-            id=onelogin_connector_id
+        kwargs['idp_sso_url'] = onelogin_sso_url
         )
         kwargs['idp_slo_url'] = 'https://app.onelogin.com/trust/saml2/http-redirect/slo/{id}/'.format(
             id=onelogin_connector_id
